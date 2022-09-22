@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@CrossOrigin("*")
 @RequestMapping("api/category")
 public class CategoryController {
     private final CategoryService categoryService;
@@ -20,9 +21,9 @@ public class CategoryController {
         return ResponseEntity.ok(category1);
     }
 
-    @GetMapping("/{categoryId}")
-    public Category getCategory(@PathVariable("categoryId") Long categoryId){
-        return categoryService.getCategory(categoryId);
+    @GetMapping("/{id}")
+    public Category getCategory(@PathVariable("id") Long id){
+        return categoryService.getCategory(id);
     }
 
     @GetMapping("/categories")
@@ -30,14 +31,14 @@ public class CategoryController {
         return ResponseEntity.ok(categoryService.getCategories());
     }
 
-    @PutMapping("/")
+    @PutMapping("/update")
     public Category updateCategory(@RequestBody Category category){
         return categoryService.updateCategory(category);
     }
 
-    @DeleteMapping("/{categoryId}")
-    public void deleteCategory(@PathVariable("categoryId") Long categoryId){
-        categoryService.deleteCategory(categoryId);
+    @DeleteMapping("/delete/{id}")
+    public void deleteCategory(@PathVariable("id") Long id){
+        categoryService.deleteCategory(id);
     }
 
 }
