@@ -50,6 +50,7 @@ public class QuizController {
         quizService.deleteQuiz(id);
     }
 
+    @CrossOrigin
     @GetMapping("/category/{id}")
     public List<Quiz> getQuizzesOfCategory(@PathVariable("id") Long id){
         Category category = new Category();

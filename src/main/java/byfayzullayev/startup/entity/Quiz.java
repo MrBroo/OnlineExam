@@ -23,12 +23,14 @@ public class Quiz extends Base {
     private String numberOfQuestions;
     private boolean active = false;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private Category category;
 
-    @OneToMany(mappedBy = "quiz", cascade = CascadeType.ALL)
     @JsonIgnore
+    @OneToMany(mappedBy = "quiz", cascade = CascadeType.ALL)
+
     private Set<Question> questions = new HashSet<>();
+
     public Quiz() {
     }
 

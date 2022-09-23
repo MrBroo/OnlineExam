@@ -36,6 +36,7 @@ public class QuizServiceImpl implements QuizService {
 
     @Override
     public Quiz getQuiz(Long id) {
+
         return quizRepository.findById(id).get();
     }
 

@@ -1,13 +1,13 @@
 package byfayzullayev.startup.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Question extends Base {
@@ -15,14 +15,30 @@ public class Question extends Base {
     @Column(columnDefinition = "text")
     private String content;
     private String image;
-    private String option1;
-    private String option2;
-    private String option3;
-    private String option4;
-    private String option5;
-    private String answer;
+
+    public String getGetNumberOfOption() {
+        return getNumberOfOption;
+    }
+
+    public void setGetNumberOfOption(String getNumberOfOption) {
+        this.getNumberOfOption = getNumberOfOption;
+    }
+
+    private String getNumberOfOption;
+
     @ManyToOne
     private Quiz quiz;
+
+    public Set<OptionEntity> getOptionEntities() {
+        return optionEntities;
+    }
+
+    public void setOptionEntities(Set<OptionEntity> optionEntities) {
+        this.optionEntities = optionEntities;
+    }
+    @JsonIgnore
+    @OneToMany(mappedBy = "question", cascade = CascadeType.ALL)
+    private Set<OptionEntity> optionEntities = new HashSet<>();
 
     public Question() {
     }
@@ -41,54 +57,6 @@ public class Question extends Base {
 
     public void setImage(String image) {
         this.image = image;
-    }
-
-    public String getOption1() {
-        return option1;
-    }
-
-    public void setOption1(String option1) {
-        this.option1 = option1;
-    }
-
-    public String getOption2() {
-        return option2;
-    }
-
-    public void setOption2(String option2) {
-        this.option2 = option2;
-    }
-
-    public String getOption3() {
-        return option3;
-    }
-
-    public void setOption3(String option3) {
-        this.option3 = option3;
-    }
-
-    public String getOption4() {
-        return option4;
-    }
-
-    public void setOption4(String option4) {
-        this.option4 = option4;
-    }
-
-    public String getOption5() {
-        return option5;
-    }
-
-    public void setOption5(String option5) {
-        this.option5 = option5;
-    }
-
-    public String getAnswer() {
-        return answer;
-    }
-
-    public void setAnswer(String answer) {
-        this.answer = answer;
     }
 
     public Quiz getQuiz() {
