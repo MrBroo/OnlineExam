@@ -1,5 +1,7 @@
 package byfayzullayev.startup.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -12,6 +14,7 @@ public class OptionEntity extends Base {
     private boolean isTrue = false;
 
     @ManyToOne
+    @JsonIgnore
     private Question question;
 
     public boolean isTrue() {

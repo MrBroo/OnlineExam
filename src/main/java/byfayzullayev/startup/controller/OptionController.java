@@ -35,19 +35,19 @@ private final QuestionsService questionsService;
 
     }
 
-    @GetMapping("/question/{id}")
-    public ResponseEntity<?> getOptionOfQuestion(@PathVariable("id") Long id) {
-
-        Question question  = questionsService.getQuestion(id);
-        Set<OptionEntity> optionEntities = question.getOptionEntities();
-        List list = new ArrayList(optionEntities);
-        if (list.size() > Integer.parseInt(question.getGetNumberOfOption())) {
-            list.subList(0, Integer.parseInt(question.getGetNumberOfOption() + 1));
-        }
-        Collections.shuffle(list);
-        return ResponseEntity.ok(list);
-
-    }
+//    @GetMapping("/question/{id}")
+//    public ResponseEntity<?> getOptionOfQuestion(@PathVariable("id") Long id) {
+//
+//        Question question  = questionsService.getQuestion(id);
+//        Set<OptionEntity> optionEntities = question.getOptionEntities();
+//        List list = new ArrayList(optionEntities);
+//        if (list.size() > Integer.parseInt(question.getGetNumberOfOption())) {
+//            list.subList(0, Integer.parseInt(question.getGetNumberOfOption() + 1));
+//        }
+//        Collections.shuffle(list);
+//        return ResponseEntity.ok(list);
+//
+//    }
 
     @GetMapping("/{id}")
     public OptionEntity getOption(@PathVariable("id") Long id) {

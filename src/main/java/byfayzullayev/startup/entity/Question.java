@@ -1,7 +1,6 @@
 package byfayzullayev.startup.entity;
 
 
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
@@ -16,17 +15,9 @@ public class Question extends Base {
     private String content;
     private String image;
 
-    public String getGetNumberOfOption() {
-        return getNumberOfOption;
-    }
-
-    public void setGetNumberOfOption(String getNumberOfOption) {
-        this.getNumberOfOption = getNumberOfOption;
-    }
-
-    private String getNumberOfOption;
 
     @ManyToOne
+    @JsonIgnore
     private Quiz quiz;
 
     public Set<OptionEntity> getOptionEntities() {
@@ -36,7 +27,7 @@ public class Question extends Base {
     public void setOptionEntities(Set<OptionEntity> optionEntities) {
         this.optionEntities = optionEntities;
     }
-    @JsonIgnore
+
     @OneToMany(mappedBy = "question", cascade = CascadeType.ALL)
     private Set<OptionEntity> optionEntities = new HashSet<>();
 

@@ -19,7 +19,16 @@ import static org.hibernate.annotations.FetchMode.SELECT;
 public class Quiz extends Base {
     private String title;
     private String description;
-    private String maxMarks;
+    private String time;
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
     private String numberOfQuestions;
     private boolean active = false;
 
@@ -50,13 +59,7 @@ public class Quiz extends Base {
         this.description = description;
     }
 
-    public String getMaxMarks() {
-        return maxMarks;
-    }
 
-    public void setMaxMarks(String maxMarks) {
-        this.maxMarks = maxMarks;
-    }
 
     public String getNumberOfQuestions() {
         return numberOfQuestions;
