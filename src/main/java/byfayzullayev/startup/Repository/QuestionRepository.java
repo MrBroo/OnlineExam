@@ -1,12 +1,12 @@
 package byfayzullayev.startup.Repository;
 
-import byfayzullayev.startup.entity.Question;
-import byfayzullayev.startup.entity.Quiz;
+import byfayzullayev.startup.entity.questions.QuestionEntity;
+import byfayzullayev.startup.entity.questions.QuizEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Set;
 
 
-public interface QuestionRepository extends JpaRepository<Question, Long> {
-    Set<Question> findByQuiz(Quiz quiz);
+public interface QuestionRepository extends JpaRepository<QuestionEntity, Long> {
+    Set<QuestionEntity> findByQuiz(QuizEntity quiz);
 }

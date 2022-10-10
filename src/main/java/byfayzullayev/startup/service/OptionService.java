@@ -1,8 +1,7 @@
 package byfayzullayev.startup.service;
 
-import byfayzullayev.startup.entity.OptionEntity;
-import byfayzullayev.startup.entity.Question;
-import byfayzullayev.startup.entity.Quiz;
+import byfayzullayev.startup.entity.questions.OptionEntity;
+import byfayzullayev.startup.entity.questions.QuestionEntity;
 
 import java.util.Set;
 
@@ -17,5 +16,5 @@ public interface OptionService {
 
     public void deleteOption(Long id);
 
-    public Set<OptionEntity> getOptionOfQuestion(Question question);
+    public Set<OptionEntity> getOptionOfQuestion(QuestionEntity question);
 }

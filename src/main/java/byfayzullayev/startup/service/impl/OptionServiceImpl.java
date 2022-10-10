@@ -1,8 +1,8 @@
 package byfayzullayev.startup.service.impl;
 
 import byfayzullayev.startup.Repository.OptionRepository;
-import byfayzullayev.startup.entity.OptionEntity;
-import byfayzullayev.startup.entity.Question;
+import byfayzullayev.startup.entity.questions.OptionEntity;
+import byfayzullayev.startup.entity.questions.QuestionEntity;
 import byfayzullayev.startup.service.OptionService;
 import org.springframework.stereotype.Service;
 
@@ -47,7 +47,7 @@ public class OptionServiceImpl implements OptionService {
     }
 
     @Override
-    public Set<OptionEntity> getOptionOfQuestion(Question question) {
+    public Set<OptionEntity> getOptionOfQuestion(QuestionEntity question) {
         return optionRepository.findByQuestion(question);
     }
 }

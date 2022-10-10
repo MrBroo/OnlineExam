@@ -1,19 +1,13 @@
 package byfayzullayev.startup.controller;
 
-import byfayzullayev.startup.entity.OptionEntity;
-import byfayzullayev.startup.entity.Question;
+import byfayzullayev.startup.entity.questions.OptionEntity;
 import byfayzullayev.startup.service.OptionService;
 import byfayzullayev.startup.service.QuestionsService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Set;
-
 @RestController
-@RequestMapping("api/option")
+@RequestMapping("api/onlineExam/option")
 @CrossOrigin("*")
 public class OptionController {
 

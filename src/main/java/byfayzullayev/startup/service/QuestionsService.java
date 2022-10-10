@@ -1,22 +1,22 @@
 package byfayzullayev.startup.service;
 
 
-import byfayzullayev.startup.entity.Question;
-import byfayzullayev.startup.entity.Quiz;
+import byfayzullayev.startup.entity.questions.QuestionEntity;
+import byfayzullayev.startup.entity.questions.QuizEntity;
 
 import java.util.Set;
 
 public interface QuestionsService {
 
-    public Question addQuestion(Question question);
+    public QuestionEntity addQuestion(QuestionEntity question);
 
-    public Question updateQuestion(Question question);
+    public QuestionEntity updateQuestion(QuestionEntity question);
 
-    public Set<Question> getQuestions();
+    public Set<QuestionEntity> getQuestions();
 
-    public Question getQuestion(Long id);
+    public QuestionEntity getQuestion(Long id);
 
     public void deleteQuestion(Long id);
 
-    public Set<Question> getQuestionsOfQuiz(Quiz quiz);
+    public Set<QuestionEntity> getQuestionsOfQuiz(QuizEntity quiz);
 }

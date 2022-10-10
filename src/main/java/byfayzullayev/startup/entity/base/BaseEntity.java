@@ -1,4 +1,4 @@
-package byfayzullayev.startup.entity;
+package byfayzullayev.startup.entity.base;
 
 import lombok.Data;
 
@@ -9,7 +9,7 @@ import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
 @Data
-public class Base {
+public class BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

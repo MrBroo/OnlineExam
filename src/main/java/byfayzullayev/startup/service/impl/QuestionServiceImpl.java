@@ -1,8 +1,8 @@
 package byfayzullayev.startup.service.impl;
 
 import byfayzullayev.startup.Repository.QuestionRepository;
-import byfayzullayev.startup.entity.Question;
-import byfayzullayev.startup.entity.Quiz;
+import byfayzullayev.startup.entity.questions.QuestionEntity;
+import byfayzullayev.startup.entity.questions.QuizEntity;
 import byfayzullayev.startup.service.QuestionsService;
 import org.springframework.stereotype.Service;
 
@@ -18,35 +18,35 @@ public class QuestionServiceImpl implements QuestionsService {
     }
 
     @Override
-    public Question addQuestion(Question question) {
+    public QuestionEntity addQuestion(QuestionEntity question) {
         return questionsRepository.save(question);
     }
 
     @Override
-    public Question updateQuestion(Question question) {
+    public QuestionEntity updateQuestion(QuestionEntity question) {
         return questionsRepository.save(question);
     }
 
     @Override
-    public Set<Question> getQuestions() {
+    public Set<QuestionEntity> getQuestions() {
         return new LinkedHashSet<>(questionsRepository.findAll());
     }
 
     @Override
-    public Question getQuestion(Long id) {
+    public QuestionEntity getQuestion(Long id) {
         return questionsRepository.findById(id).get();
     }
 
     @Override
     public void deleteQuestion(Long id) {
-        Question question = new Question();
+        QuestionEntity question = new QuestionEntity();
         question.setId(id);
         questionsRepository.delete(question);
 
     }
 
     @Override
-    public Set<Question> getQuestionsOfQuiz(Quiz quiz) {
+    public Set<QuestionEntity> getQuestionsOfQuiz(QuizEntity quiz) {
         return questionsRepository.findByQuiz(quiz);
     }
 }

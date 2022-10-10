@@ -1,7 +1,7 @@
 package byfayzullayev.startup.controller;
 
-import byfayzullayev.startup.entity.Question;
-import byfayzullayev.startup.entity.Quiz;
+import byfayzullayev.startup.entity.questions.QuestionEntity;
+import byfayzullayev.startup.entity.questions.QuizEntity;
 import byfayzullayev.startup.service.QuestionsService;
 import byfayzullayev.startup.service.QuizService;
 import org.springframework.http.ResponseEntity;
@@ -11,10 +11,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("api/questions")
+@RequestMapping("api/onlineExam/questions")
 public class QuestionsController {
 
     private final QuestionsService questionsService;
@@ -27,14 +26,14 @@ public class QuestionsController {
 
     @CrossOrigin
     @PostMapping("/add")
-    public ResponseEntity<Question> addQuestion(@RequestBody Question question) {
+    public ResponseEntity<QuestionEntity> addQuestion(@RequestBody QuestionEntity question) {
         return ResponseEntity.ok(questionsService.addQuestion(question));
 
     }
 
     @CrossOrigin
     @PutMapping("/update")
-    public ResponseEntity<Question> updateQuestion(@RequestBody Question question) {
+    public ResponseEntity<QuestionEntity> updateQuestion(@RequestBody QuestionEntity question) {
         return ResponseEntity.ok(questionsService.updateQuestion(question));
 
     }
@@ -47,8 +46,8 @@ public class QuestionsController {
 //        Set<Question> questionsOfQuiz = questionsService.getQuestionsOfQuiz(quiz);
 //        return ResponseEntity.ok(questionsOfQuiz);
 
-        Quiz quiz = quizService.getQuiz(id);
-        Set<Question> questions = quiz.getQuestions();
+        QuizEntity quiz = quizService.getQuiz(id);
+        Set<QuestionEntity> questions = quiz.getQuestions();
         List list = new ArrayList(questions);
         if (list.size() > Integer.parseInt(quiz.getNumberOfQuestions())) {
             list.subList(0, Integer.parseInt(quiz.getNumberOfQuestions() + 1));
@@ -62,7 +61,7 @@ public class QuestionsController {
     //get single question
     @CrossOrigin
     @GetMapping("/{id}")
-    public Question getQuestion(@PathVariable("id") Long id) {
+    public QuestionEntity getQuestion(@PathVariable("id") Long id) {
         return questionsService.getQuestion(id);
     }
 

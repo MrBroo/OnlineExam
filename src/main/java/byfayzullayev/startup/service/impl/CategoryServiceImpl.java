@@ -1,7 +1,7 @@
 package byfayzullayev.startup.service.impl;
 
 import byfayzullayev.startup.Repository.CategoryRepository;
-import byfayzullayev.startup.entity.Category;
+import byfayzullayev.startup.entity.questions.CategoryEntity;
 import byfayzullayev.startup.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,28 +20,28 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public Category addCategory(Category category) {
+    public CategoryEntity addCategory(CategoryEntity category) {
         return categoryRepository.save(category);
     }
 
     @Override
-    public Category updateCategory(Category category) {
+    public CategoryEntity updateCategory(CategoryEntity category) {
         return categoryRepository.save(category);
     }
 
     @Override
-    public Set<Category> getCategories() {
+    public Set<CategoryEntity> getCategories() {
         return new LinkedHashSet<>(categoryRepository.findAll());
     }
 
     @Override
-    public Category getCategory(Long categoryId) {
+    public CategoryEntity getCategory(Long categoryId) {
         return categoryRepository.findById(categoryId).get();
     }
 
     @Override
     public void deleteCategory(Long categoryId) {
-        Category category = new Category();
+        CategoryEntity category = new CategoryEntity();
         category.setId(categoryId);
         categoryRepository.delete(category);
 

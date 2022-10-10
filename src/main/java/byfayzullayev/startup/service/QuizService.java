@@ -1,23 +1,21 @@
 package byfayzullayev.startup.service;
 
-import byfayzullayev.startup.entity.Category;
-import byfayzullayev.startup.entity.Quiz;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Service;
+import byfayzullayev.startup.entity.questions.CategoryEntity;
+import byfayzullayev.startup.entity.questions.QuizEntity;
 
 import java.util.List;
 import java.util.Set;
 
 public interface QuizService {
-    public Quiz addQuiz(Quiz quiz);
+    public QuizEntity addQuiz(QuizEntity quiz);
 
-    public Quiz updateQuiz(Quiz quiz);
+    public QuizEntity updateQuiz(QuizEntity quiz);
 
-    public Set<Quiz> getQuizzes();
+    public Set<QuizEntity> getQuizzes();
 
-    public Quiz getQuiz(Long id);
+    public QuizEntity getQuiz(Long id);
 
     public void deleteQuiz(Long id);
 
-    public List<Quiz> getQuizzesOfCategory(Category category);
+    public List<QuizEntity> getQuizzesOfCategory(CategoryEntity category);
 }

@@ -1,11 +1,7 @@
-package byfayzullayev.startup.entity;
+package byfayzullayev.startup.entity.questions;
 
+import byfayzullayev.startup.entity.base.BaseEntity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-import org.hibernate.annotations.Fetch;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -13,19 +9,17 @@ import javax.persistence.OneToMany;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-import static org.hibernate.annotations.FetchMode.SELECT;
-
 @Entity
-public class Category extends Base {
+public class CategoryEntity extends BaseEntity {
 
     private String title;
     private String description;
 
     @JsonIgnore
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
-    private Set<Quiz> quizzes = new LinkedHashSet<>();
+    private Set<QuizEntity> quizzes = new LinkedHashSet<>();
 
-    public Category() {
+    public CategoryEntity() {
     }
 
     public String getTitle() {
@@ -44,11 +38,11 @@ public class Category extends Base {
         this.description = description;
     }
 
-    public Set<Quiz> getQuizzes() {
+    public Set<QuizEntity> getQuizzes() {
         return quizzes;
     }
 
-    public void setQuizzes(Set<Quiz> quizzes) {
+    public void setQuizzes(Set<QuizEntity> quizzes) {
         this.quizzes = quizzes;
     }
 }

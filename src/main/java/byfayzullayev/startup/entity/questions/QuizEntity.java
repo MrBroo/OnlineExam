@@ -1,22 +1,18 @@
-package byfayzullayev.startup.entity;
+package byfayzullayev.startup.entity.questions;
 
 
+import byfayzullayev.startup.entity.base.BaseEntity;
+import byfayzullayev.startup.entity.questions.CategoryEntity;
+import byfayzullayev.startup.entity.questions.QuestionEntity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-import org.hibernate.annotations.Fetch;
 
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
-import static org.hibernate.annotations.FetchMode.SELECT;
-
 
 @Entity
-public class Quiz extends Base {
+public class QuizEntity extends BaseEntity {
     private String title;
     private String description;
     private String time;
@@ -33,14 +29,13 @@ public class Quiz extends Base {
     private boolean active = false;
 
     @ManyToOne
-    private Category category;
+    private CategoryEntity category;
 
     @JsonIgnore
     @OneToMany(mappedBy = "quiz", cascade = CascadeType.ALL)
+    private Set<QuestionEntity> questions = new HashSet<>();
 
-    private Set<Question> questions = new HashSet<>();
-
-    public Quiz() {
+    public QuizEntity() {
     }
 
     public String getTitle() {
@@ -77,19 +72,19 @@ public class Quiz extends Base {
         this.active = active;
     }
 
-    public Category getCategory() {
+    public CategoryEntity getCategory() {
         return category;
     }
 
-    public void setCategory(Category category) {
+    public void setCategory(CategoryEntity category) {
         this.category = category;
     }
 
-    public Set<Question> getQuestions() {
+    public Set<QuestionEntity> getQuestions() {
         return questions;
     }
 
-    public void setQuestions(Set<Question> questions) {
+    public void setQuestions(Set<QuestionEntity> questions) {
         this.questions = questions;
     }
 

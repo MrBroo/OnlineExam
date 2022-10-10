@@ -1,10 +1,9 @@
 package byfayzullayev.startup.service.impl;
 
 import byfayzullayev.startup.Repository.QuizRepository;
-import byfayzullayev.startup.entity.Category;
-import byfayzullayev.startup.entity.Quiz;
+import byfayzullayev.startup.entity.questions.CategoryEntity;
+import byfayzullayev.startup.entity.questions.QuizEntity;
 import byfayzullayev.startup.service.QuizService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
@@ -20,35 +19,35 @@ public class QuizServiceImpl implements QuizService {
     }
 
     @Override
-    public Quiz addQuiz(Quiz quiz) {
+    public QuizEntity addQuiz(QuizEntity quiz) {
         return quizRepository.save(quiz);
     }
 
     @Override
-    public Quiz updateQuiz(Quiz quiz) {
+    public QuizEntity updateQuiz(QuizEntity quiz) {
         return quizRepository.save(quiz);
     }
 
     @Override
-    public Set<Quiz> getQuizzes() {
+    public Set<QuizEntity> getQuizzes() {
         return new HashSet<>(quizRepository.findAll());
     }
 
     @Override
-    public Quiz getQuiz(Long id) {
+    public QuizEntity getQuiz(Long id) {
 
         return quizRepository.findById(id).get();
     }
 
     @Override
     public void deleteQuiz(Long id) {
-        Quiz quiz = new Quiz();
+        QuizEntity quiz = new QuizEntity();
         quiz.setId(id);
         quizRepository.delete(quiz);
     }
 
     @Override
-    public List<Quiz> getQuizzesOfCategory(Category category) {
+    public List<QuizEntity> getQuizzesOfCategory(CategoryEntity category) {
         return quizRepository.findByCategory(category);
     }
 }

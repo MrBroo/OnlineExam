@@ -1,13 +1,13 @@
 package byfayzullayev.startup.controller;
 
-import byfayzullayev.startup.entity.Category;
+import byfayzullayev.startup.entity.questions.CategoryEntity;
 import byfayzullayev.startup.service.CategoryService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin("*")
-@RequestMapping("api/category")
+@RequestMapping("api/onlineExam/category")
 public class CategoryController {
     private final CategoryService categoryService;
 
@@ -16,13 +16,13 @@ public class CategoryController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<?> addCategory(@RequestBody Category category){
-        Category category1 = categoryService.addCategory(category);
+    public ResponseEntity<?> addCategory(@RequestBody CategoryEntity category){
+        CategoryEntity category1 = categoryService.addCategory(category);
         return ResponseEntity.ok(category1);
     }
 
     @GetMapping("/{id}")
-    public Category getCategory(@PathVariable("id") Long id){
+    public CategoryEntity getCategory(@PathVariable("id") Long id){
         return categoryService.getCategory(id);
     }
 
@@ -32,7 +32,7 @@ public class CategoryController {
     }
 
     @PutMapping("/update")
-    public Category updateCategory(@RequestBody Category category){
+    public CategoryEntity updateCategory(@RequestBody CategoryEntity category){
         return categoryService.updateCategory(category);
     }
 

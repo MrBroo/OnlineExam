@@ -1,7 +1,7 @@
 package byfayzullayev.startup.controller;
 
-import byfayzullayev.startup.entity.Category;
-import byfayzullayev.startup.entity.Quiz;
+import byfayzullayev.startup.entity.questions.CategoryEntity;
+import byfayzullayev.startup.entity.questions.QuizEntity;
 import byfayzullayev.startup.service.QuizService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/quiz")
+@RequestMapping("api/onlineExam/quiz")
 public class QuizController {
     private final QuizService quizService;
 
@@ -20,14 +20,14 @@ public class QuizController {
 
     @CrossOrigin
     @PostMapping("/add")
-    public ResponseEntity<Quiz> addQuiz(@RequestBody Quiz quiz) {
+    public ResponseEntity<QuizEntity> addQuiz(@RequestBody QuizEntity quiz) {
         return ResponseEntity.ok(quizService.addQuiz(quiz));
 
     }
 
     @CrossOrigin
     @PutMapping("/update")
-    public ResponseEntity<Quiz> updateQuiz(@RequestBody Quiz quiz) {
+    public ResponseEntity<QuizEntity> updateQuiz(@RequestBody QuizEntity quiz) {
         return ResponseEntity.ok(quizService.updateQuiz(quiz));
 
     }
@@ -40,7 +40,7 @@ public class QuizController {
 
     @CrossOrigin
     @GetMapping("/{id}")
-    public Quiz getQuiz(@PathVariable("id") Long id) {
+    public QuizEntity getQuiz(@PathVariable("id") Long id) {
         return quizService.getQuiz(id);
     }
 
@@ -52,8 +52,8 @@ public class QuizController {
 
     @CrossOrigin
     @GetMapping("/category/{id}")
-    public List<Quiz> getQuizzesOfCategory(@PathVariable("id") Long id){
-        Category category = new Category();
+    public List<QuizEntity> getQuizzesOfCategory(@PathVariable("id") Long id){
+        CategoryEntity category = new CategoryEntity();
         category.setId(id);
         return quizService.getQuizzesOfCategory(category);
     }

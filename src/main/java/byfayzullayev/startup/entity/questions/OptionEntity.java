@@ -1,21 +1,21 @@
-package byfayzullayev.startup.entity;
+package byfayzullayev.startup.entity.questions;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import byfayzullayev.startup.entity.base.BaseEntity;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
 
 @Entity
-public class OptionEntity extends Base {
+public class OptionEntity extends BaseEntity {
 
     private String option;
     private boolean isTrue = false;
 
     @ManyToOne
-    @JsonIgnore
-    private Question question;
+    @JsonBackReference
+    private QuestionEntity question;
 
     public boolean isTrue() {
         return isTrue;
@@ -33,16 +33,20 @@ public class OptionEntity extends Base {
         this.option = option;
     }
 
-    public Question getQuestion() {
+    public QuestionEntity getQuestion() {
         return question;
     }
 
-    public void setQuestion(Question question) {
+    public void setQuestion(QuestionEntity question) {
         this.question = question;
     }
 
     public OptionEntity() {
     }
 
-
+    public OptionEntity(String option, boolean isTrue, QuestionEntity question) {
+        this.option = option;
+        this.isTrue = isTrue;
+        this.question = question;
+    }
 }
